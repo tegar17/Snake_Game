@@ -55,3 +55,9 @@ class Snake:
         self.add_turtle(self.all_turtle[-1].position())
         self.all_turtle[-1].color(self.rand_col)
 
+    def reset(self):
+        for tur in self.all_turtle:
+            tur.goto(1000,1000)
+        self.all_turtle.clear()
+        self.create_snake()
+        self.head = self.all_turtle[0]

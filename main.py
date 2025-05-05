@@ -30,16 +30,18 @@ while game_is_on:
     if snake.head.distance(food) < 15:
         food.refresh_random()
         snake.extend()
-        score_board.show_incrace()
+        score_board.increase_score()
 
     # Detect collision with wall
     if snake.head.xcor() > 285 or snake.head.xcor() < -285 or snake.head.ycor() > 285 or snake.head.ycor() < -285:
-        game_is_on = False
-        score_board.game_over()
+        score_board.reset()
+        snake.reset()
 
-    for turtle in snake.all_turtle[1:]:
-        if snake.head.distance(turtle) < 10:
-            game_is_on = False
-            score_board.game_over()
+    for turtle in snake.all_turtle:
+        if turtle == snake.head :
+            pass
+        elif snake.head.distance(turtle) < 10:
+            score_board.reset()
+            snake.reset()
         
 screen.exitonclick()
